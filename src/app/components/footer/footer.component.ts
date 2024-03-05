@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AppComponent} from "../../app.component";
+import {PHONE, INSTAGRAM_LINK} from "../../constants";
 
 @Component({
   selector: 'footer-component',
@@ -8,9 +8,9 @@ import {AppComponent} from "../../app.component";
 })
 export class FooterComponent  {
 
-  public phoneNumber : string = '+375 (29) 368-98-68';
+  public phoneNumber : string = PHONE;
 
-  public instagramLink = 'https://instagram.com';
+  public instagramLink = INSTAGRAM_LINK;
 
 
 }

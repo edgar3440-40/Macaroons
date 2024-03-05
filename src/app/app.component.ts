@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {ProductType} from "./types/product.type";
+import {INSTAGRAM_LINK, PHONE} from "./constants";
 
 
 @Component({
@@ -12,7 +13,9 @@ import {ProductType} from "./types/product.type";
 
 export class AppComponent {
 
+  public phoneNumber : string = PHONE;
 
+  public instagramLink = INSTAGRAM_LINK;
   public showPresent: boolean = true;
   public products: ProductType[] = [
     {
