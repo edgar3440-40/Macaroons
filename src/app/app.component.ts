@@ -1,37 +1,34 @@
-import { Component } from '@angular/core';
-import {ProductType} from "./types/product.type";
+import {Component, OnInit} from '@angular/core';
 import {INSTAGRAM_LINK, PHONE} from "./constants";
+import {ProductType} from "./types/product.type";
+import {ProductService} from "./services/product.service";
+import {CartService} from "./services/cart.service";
+import {AdvantageService} from "./services/advantage.service";
+import {AdvantageType} from "./types/advantage.type";
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 
 
 
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   public phoneNumber : string = PHONE;
+
 
   public instagramLink = INSTAGRAM_LINK;
   public showPresent: boolean = true;
   public products: ProductType[] = [
-    {
-      image: '1.png',
-      title: 'Макарун с малиной',
-    },{
-      image: '4.png',
-      title: 'Макарун с манго',
-    },{
-      image: '5.png',
-      title: 'Пирог с ванилью',
-    },{
-      image: '7.png',
-      title: 'Пирог с фисташками',
-    },
-  ]
+
+  ];
+
+  public advantages: AdvantageType[] = [
+
+  ];
 
   public formValues = {
     productTitle: '',
@@ -39,13 +36,29 @@ export class AppComponent {
     phone: '',
   }
 
+
+
+  constructor(private  productService: ProductService, public cartService: CartService, public advantageService: AdvantageService) {
+
+  }
+
+
+  ngOnInit() {
+    this.products = this.productService.getProducts();
+    this.advantages = this.advantageService.getAdvantages();
+  }
+
   public scrollTo(target: HTMLElement): void {
     target.scrollIntoView({behavior:'smooth'});
   }
 
-  public addToCart(product: ProductType, target: HTMLElement ): void {
+  public addToCart(title: string, target: HTMLElement ): void {
     this.scrollTo(target);
-    this.formValues.productTitle = product.title;
+    console.log(title)
+    this.formValues.productTitle = title;
+    this.cartService.count++;
+    this.cartService.price+= 1.70;
+    alert(title + ' добавлен в корзину!')
   }
 
   public createOrder() {

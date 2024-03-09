@@ -1,0 +1,32 @@
+<div class="choose__item">
+  <div class="choose__img">
+    <img src="assets/images/{{product.image}}" alt="macaroon-img" class="choose__img--image">
+  </div>
+  <div class="choose__info">
+    <div class="choose__name">
+      {{product.title}}
+    </div>
+
+    <div class="choose__request">
+
+
+      <div class="choose__detail">
+                    <span class="choose__amount">
+                        1 шт.
+                    </span>
+
+        <div class="choose__price">
+          1,70 руб.
+        </div>
+
+      </div>
+
+      <button class="choose__order--btn btn" inputEffects (click)="addProductToCart()">
+        Заказать
+      </button>
+
+
+    </div>
+
+  </div>
+</div>
